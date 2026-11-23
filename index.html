@@ -1248,11 +1248,100 @@
         font-size: 14px;
       }
 
+      .f-toggle { display: none; }
+      .bars { min-height: 100dvh; }
+
       @media (max-width: 640px) {
-        .bars-inner { padding: 36px 14px 60px; }
-        .filters { position: static; padding: 18px 16px 14px; }
-        .f-label { min-width: 100%; }
-        .grid { grid-template-columns: 1fr; }
+        .bars-inner {
+          padding: calc(30px + env(safe-area-inset-top)) 14px calc(48px + env(safe-area-inset-bottom));
+        }
+        .bars-kicker { letter-spacing: 0.28em; text-indent: 0.28em; font-size: 11px; }
+        .bars-head { margin-bottom: 22px; }
+        .bars-head h2 { font-size: 30px; margin: 8px 0 6px; }
+        .bars-head p { font-size: 14px; }
+
+        /* filters collapse behind a button on phones */
+        .f-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 100%;
+          font-family: inherit;
+          font-size: 16px;
+          color: var(--lx-gold-hi);
+          background: linear-gradient(160deg, rgba(58, 34, 27, 0.92), rgba(28, 54, 83, 0.5));
+          border: 1px solid rgba(157, 115, 70, 0.4);
+          border-radius: 999px;
+          padding: 13px 18px;
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .f-toggle.open { border-color: var(--lx-gold); }
+        .f-badge {
+          min-width: 22px;
+          height: 22px;
+          padding: 0 6px;
+          border-radius: 999px;
+          background: linear-gradient(135deg, #d9b98c, #9d7346);
+          color: #170f0e;
+          font-size: 13px;
+          font-weight: 600;
+          display: inline-grid;
+          place-items: center;
+        }
+        .f-caret { transition: transform 0.3s; font-size: 18px; line-height: 1; }
+        .f-toggle.open .f-caret { transform: rotate(180deg); }
+        .filters {
+          position: static;
+          padding: 16px 14px 12px;
+          margin-top: 10px;
+          display: none;
+          border-radius: 16px;
+        }
+        .filters.open { display: block; animation: f-open 0.35s ease; }
+        @keyframes f-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+        .f-row { gap: 8px 10px; }
+        .f-row + .f-row { margin-top: 12px; padding-top: 12px; }
+        .f-label { min-width: 100%; font-size: 11px; }
+        .f-search, .f-select { font-size: 16px; } /* stops iOS zoom on focus */
+        .f-select { width: 100%; }
+        .chip { font-size: 14px; padding: 8px 14px; }
+        .chk-group { width: 100%; gap: 18px; padding: 10px 14px; }
+        .chk-group b { flex: 1; }
+        .chk { font-size: 15px; }
+        .chk input { width: 22px; height: 22px; }
+        .f-meta { margin: 18px 4px 12px; }
+
+        .grid { grid-template-columns: 1fr; gap: 14px; }
+        .bar-card { padding: 18px 18px 16px; border-radius: 14px; }
+        .bc-name { font-size: 22px; }
+        .bc-info { font-size: 14px; }
+        .bc-actions { gap: 8px; }
+        .bc-btn { padding: 12px 10px; font-size: 14px; }
+        .more-btn { width: 100%; }
+        .lux-mark { font-size: 30px; }
+        .lux-sub { font-size: 12px; letter-spacing: 0.25em; }
+      }
+
+      /* invite pages on small phones */
+      @media (max-width: 420px) {
+        .card { padding: 38px 22px 30px; border-radius: 22px; }
+        .card .icon { width: 96px; margin-bottom: 12px; }
+        .card h1 { font-size: 28px; }
+        .card p { font-size: 16px; margin-bottom: 24px; }
+        .btn { font-size: 17px; padding: 12px 28px; }
+        .stage { gap: 22px; }
+        .envelope-wrap { transform-origin: 50% 100%; }
+        .unread { font-size: 16px; }
+      }
+      @media (max-width: 340px) {
+        .envelope { transform: scale(0.88); }
+        .card h1 { font-size: 25px; }
+      }
+      @media (hover: none) {
+        .bar-card:hover { transform: none; }
+        .bar-card:hover::after { transform: translateX(-120%); }
       }
       @media (prefers-reduced-motion: reduce) {
         .lux-curtain, .lux-curtain *, .bar-card, .lx-reveal {
@@ -1389,6 +1478,9 @@
           <div class="gold-rule"></div>
         </header>
 
+        <button class="f-toggle lx-reveal" id="fToggle" type="button" aria-expanded="false" aria-controls="filters">
+          <span>ตัวกรอง</span><span class="f-badge" id="fBadge"></span><span class="f-caret">⌄</span>
+        </button>
         <div class="filters lx-reveal" id="filters">
           <div class="f-row">
             <input class="f-search" id="fSearch" type="search" placeholder="ค้นหาชื่อร้าน…" autocomplete="off" />
@@ -1577,11 +1669,15 @@
           tries++;
         } while (
           (Math.hypot(x - r.left, y - r.top) < 140 ||
+            (() => {
+              const yb = yesBtn.getBoundingClientRect();
+              return x < yb.right + 16 && x + r.width > yb.left - 16 && y < yb.bottom + 16 && y + r.height > yb.top - 16;
+            })() ||
             (ptr.x > x - 40 &&
               ptr.x < x + r.width + 40 &&
               ptr.y > y - 40 &&
               ptr.y < y + r.height + 40)) &&
-          tries < 40
+          tries < 80
         );
         noBtn.style.left = x + "px";
         noBtn.style.top = y + "px";
@@ -1760,7 +1856,14 @@
           </article>`;
         }
 
+        function updateBadge() {
+          const n = state.music.size + state.drink.size + state.live.size + state.roof.size + (state.q.trim() ? 1 : 0);
+          const el = $("fBadge");
+          if (el) { el.textContent = n ? n : ""; el.style.display = n ? "" : "none"; }
+        }
+
         function render() {
+          updateBadge();
           const list = filtered();
           $("fCount").textContent = list.length;
           const grid = $("grid");
@@ -1793,6 +1896,12 @@
             render();
           });
           $("moreBtn").addEventListener("click", () => { state.shown += PAGE; render(); });
+          const tog = $("fToggle");
+          if (tog) tog.addEventListener("click", () => {
+            const open = $("filters").classList.toggle("open");
+            tog.setAttribute("aria-expanded", open);
+            tog.classList.toggle("open", open);
+          });
           $("grid").addEventListener("click", (e) => {
             const btn = e.target.closest("[data-pick]");
             if (btn) openDate(BARS[+btn.dataset.pick]);
