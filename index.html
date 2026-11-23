@@ -1506,6 +1506,10 @@
               <label class="chk"><input type="checkbox" data-f="live" value="no" />no</label>
             </div>
             <div class="chk-group">
+              <b>Viral bar</b>
+              <label class="chk"><input type="checkbox" id="fViral" />เฉพาะบาร์ไวรัล ✦</label>
+            </div>
+            <div class="chk-group">
               <b>Rooftop</b>
               <label class="chk"><input type="checkbox" data-f="roof" value="yes" />yes</label>
               <label class="chk"><input type="checkbox" data-f="roof" value="no" />no</label>
@@ -1712,7 +1716,7 @@
         }
       });
       // ================= BAR PICKER =================
-      const BARS = /*BARS_START*/[{"n":"NORSE.cnx","a":18.77297,"o":98.99723,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","w":"https://instagram.com/norse.cnx"},{"n":"Moment's Notice Jazz","a":18.77237,"o":98.98,"cat":"Dive Bar","src":"fsq","t":"b","m":"jazz","L":1},{"n":"braycompany.cmi","a":18.79674,"o":98.96882,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","p":"082 515 9991","w":"https://instagram.com/braycompany.cmi"},{"n":"Forbidden Bar","a":18.79865,"o":98.96863,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","w":"https://instagram.com/forbiddenbar.cnx"},{"n":"Gladwell Cocktail Bar","a":18.79408,"o":98.99347,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","osm":1},{"n":"North Gate Jazz Co-Op","a":18.79534,"o":98.98704,"cat":"Jazz and Blues Venue","src":"fsq","t":"b","m":"jazz","L":1,"p":"081 765 5246","h":"Mo-Su 20:00-02:00","w":"https://www.facebook.com/northgate.jazzcoop","d":"Every night Jazz music, Tuesday Open Jam","osm":1},{"n":"Noir Cmi","a":18.76384,"o":99.00143,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"Yacompany","a":18.78107,"o":98.99349,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"22 Minicocktailbar ๒๒ บาร์","a":18.79001,"o":98.95999,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","osm":1},{"n":"Thuub Bar","a":18.79214,"o":98.99386,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","p":"063 416 2604"},{"n":"Bitter Truth","a":18.78653,"o":98.98226,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","p":"094 630 5648"},{"n":"BAR81.CNX","a":18.78661,"o":98.98193,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"North Country","a":18.78816,"o":98.99994,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"Shelby Bar","a":18.78231,"o":98.98181,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"Truth Is Bitter","a":18.78198,"o":98.9817,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"Woodwind","a":18.79715,"o":98.96882,"cat":"Jazz and Blues Venue","src":"fsq","t":"b","m":"jazz","L":1},{"n":"Soi Dog Blues Bar","t":"b","a":18.79347,"o":98.9947,"h":"Fr-Su 18:00-23:59","p":"+66 884166798","m":"blues","L":1}]/*BARS_END*/;
+      const BARS = /*BARS_START*/[{"n":"NORSE.cnx","a":18.77297,"o":98.99723,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","w":"https://instagram.com/norse.cnx"},{"n":"Moment's Notice Jazz","a":18.77237,"o":98.98,"cat":"Dive Bar","src":"fsq","t":"b","m":"jazz","L":1},{"n":"braycompany.cmi","a":18.79674,"o":98.96882,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","p":"082 515 9991","w":"https://instagram.com/braycompany.cmi"},{"n":"Forbidden Bar","a":18.79865,"o":98.96863,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","w":"https://instagram.com/forbiddenbar.cnx"},{"n":"Gladwell Cocktail Bar","a":18.79408,"o":98.99347,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","osm":1},{"n":"North Gate Jazz Co-Op","a":18.79534,"o":98.98704,"cat":"Jazz and Blues Venue","src":"fsq","t":"b","m":"jazz","L":1,"p":"081 765 5246","h":"Mo-Su 20:00-02:00","w":"https://www.facebook.com/northgate.jazzcoop","d":"Every night Jazz music, Tuesday Open Jam","osm":1},{"n":"Noir Cmi","a":18.76384,"o":99.00143,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"Yacompany","a":18.78107,"o":98.99349,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"22 Minicocktailbar ๒๒ บาร์","a":18.79001,"o":98.95999,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","osm":1},{"n":"Thuub Bar","a":18.79214,"o":98.99386,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","p":"063 416 2604"},{"n":"Bitter Truth","a":18.78653,"o":98.98226,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c","p":"094 630 5648"},{"n":"BAR81.CNX","a":18.78661,"o":98.98193,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"North Country","a":18.78816,"o":98.99994,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"Shelby Bar","a":18.78231,"o":98.98181,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"Truth Is Bitter","a":18.78198,"o":98.9817,"cat":"Cocktail Bar","src":"fsq","t":"b","k":"c"},{"n":"Woodwind","a":18.79715,"o":98.96882,"cat":"Jazz and Blues Venue","src":"fsq","t":"b","m":"jazz","L":1},{"n":"Soi Dog Blues Bar","t":"b","a":18.79347,"o":98.9947,"h":"Fr-Su 18:00-23:59","p":"+66 884166798","m":"blues","L":1},{"n":"THE A TER","th":"ดิเอเทอร์","t":"b","cat":"Music Bar","m":"jazz","k":"c","L":1,"V":1,"a":18.7639,"o":99.0015,"h":"Mo-Su 17:30-00:00","p":"094 445 5663","z":"เจริญประเทศ · ช้างคลาน","man":1,"d":"Steak & cocktails พร้อมวงดนตรีสดแนวแจ๊สทุกคืน · 33/13 ถ.เจริญประเทศ","osm":1},{"n":"MA•CHUE","th":"มะเชื่อ","t":"b","cat":"Cocktail Bar","m":"jazz","k":"cbw","L":1,"V":1,"a":18.7995,"o":98.968,"z":"นิมมาน","man":1,"d":"บาร์ลับเปิดใหม่ย่านนิมมาน ค็อกเทล ไวน์ เบียร์แท็ป อาหารฟิวชั่น ดนตรีแจ๊สสด","osm":1},{"n":"The Sax Music House","th":"เดอะ แซ็กซ์ มิวสิค เฮาส์","t":"b","cat":"Music Venue","m":"jazz","k":"cbw","L":1,"V":1,"a":18.83536,"o":99.00227,"z":"รวมโชค","man":1,"d":"Music house ย่านรวมโชค มีวงดนตรีสดหลายวงตั้งแต่หัวค่ำ อาหารฝรั่ง ญี่ปุ่น ไทย","osm":1},{"n":"The Mellowship Jazz Club","th":"เดอะ เมลโลว์ชิป","t":"b","cat":"Jazz and Blues Venue","m":"jazz","k":"cw","L":1,"V":1,"a":18.80569,"o":98.96006,"h":"Mo-Su 17:00-00:00","p":"053 908 888","z":"ห้วยแก้ว · ใกล้ MAYA","man":1,"d":"แจ๊สคลับใน Ibis Styles ใกล้ MAYA วงแจ๊สสด 6 คืนต่อสัปดาห์ ค็อกเทลตั้งชื่อตามเพลงแจ๊ส","osm":1},{"n":"MaHoRee City of Music","th":"มโหรี","t":"b","cat":"Music Bar","m":"jazz","k":"c","L":1,"V":1,"a":18.7935,"o":98.9886,"z":"เมืองเก่า","man":1,"d":"บาร์ดนตรีในเมืองเก่า (ทีมเดียวกับ North Gate) แจ๊ส บลูส์ บราซิล ดนตรีไทย · 208/1 ถ.พระปกเกล้า","osm":1}]/*BARS_END*/;
       const BARS_META = /*META_START*/{"source": "foursquare", "osm": true, "fetched": "2026-11-23 11:03", "tier": "pro"}/*META_END*/;
 
       (function () {
@@ -1768,15 +1772,15 @@
           return s.replace(/;\s*/g, " · ");
         };
         const score = (b) =>
-          (b.r || 0) * 1.5 + (b.h ? 1.2 : 0) + (b.m ? 0.8 : 0) + (b.k ? 0.8 : 0) + (b.L ? 0.5 : 0) + (b.R ? 0.6 : 0) + (b.w ? 0.4 : 0) + (b.p ? 0.3 : 0) + (b.osm ? 1 : 0) + (b.cat && b.cat !== "Bar" ? 0.4 : 0);
+          (b.r || 0) * 1.5 + (b.h ? 1.2 : 0) + (b.m ? 0.8 : 0) + (b.k ? 0.8 : 0) + (b.L ? 0.5 : 0) + (b.R ? 0.6 : 0) + (b.w ? 0.4 : 0) + (b.p ? 0.3 : 0) + (b.osm ? 1 : 0) + (b.V ? 3 : 0) + (b.cat && b.cat !== "Bar" ? 0.4 : 0);
 
         BARS.forEach((b) => {
-          b.zone = zoneOf(b);
+          b.zone = b.z || zoneOf(b);
           b._s = score(b);
           b._q = [b.n, b.th, b.cat, b.zone].filter(Boolean).join(" ").toLowerCase();
         });
 
-        const state = { q: "", sort: "rec", music: new Set(), drink: new Set(), live: new Set(), roof: new Set(), shown: 24 };
+        const state = { q: "", sort: "rec", music: new Set(), drink: new Set(), live: new Set(), roof: new Set(), viral: false, shown: 24 };
         const PAGE = 24;
 
         function buildChips(el, list, key, field) {
@@ -1808,7 +1812,8 @@
               (!state.music.size || state.music.has(b.m)) &&
               (!state.drink.size || [...state.drink].some((d) => (b.k || "").includes(d))) &&
               yn(state.live, b.L) &&
-              yn(state.roof, b.R),
+              yn(state.roof, b.R) &&
+              (!state.viral || !!b.V),
           );
           if (state.sort === "name") list.sort((x, y) => x.n.localeCompare(y.n));
           else if (state.sort === "rating") list.sort((x, y) => (y.r || 0) - (x.r || 0) || y._s - x._s);
@@ -1824,6 +1829,7 @@
             const d = DRINK.find((x) => x[0] === k);
             if (d) tags.push(`<span class="tag">${d[1]}</span>`);
           });
+          if (b.V) tags.push(`<span class="tag solid">✦ Viral</span>`);
           if (b.L) tags.push(`<span class="tag">♪ Live</span>`);
           if (b.R) tags.push(`<span class="tag">☾ Rooftop</span>`);
           if (b.pr) tags.push(`<span class="tag">${"฿".repeat(b.pr)}</span>`);
@@ -1857,7 +1863,7 @@
         }
 
         function updateBadge() {
-          const n = state.music.size + state.drink.size + state.live.size + state.roof.size + (state.q.trim() ? 1 : 0);
+          const n = state.music.size + state.drink.size + state.live.size + state.roof.size + (state.viral ? 1 : 0) + (state.q.trim() ? 1 : 0);
           const el = $("fBadge");
           if (el) { el.textContent = n ? n : ""; el.style.display = n ? "" : "none"; }
         }
@@ -1890,12 +1896,15 @@
           $("fReset").addEventListener("click", () => {
             state.q = ""; $("fSearch").value = "";
             ["music", "drink", "live", "roof"].forEach((k) => state[k].clear());
+            state.viral = false;
             document.querySelectorAll(".chip.on").forEach((c) => c.classList.remove("on"));
             document.querySelectorAll(".chk input").forEach((c) => (c.checked = false));
             state.shown = PAGE;
             render();
           });
           $("moreBtn").addEventListener("click", () => { state.shown += PAGE; render(); });
+          const vb = $("fViral");
+          if (vb) vb.addEventListener("change", () => { state.viral = vb.checked; state.shown = PAGE; render(); });
           const tog = $("fToggle");
           if (tog) tog.addEventListener("click", () => {
             const open = $("filters").classList.toggle("open");
@@ -1938,7 +1947,7 @@
           const b = picked;
           $("okMeta").textContent = `${b.n} · ${sel.value}`;
           $("okSearch").href = `https://www.google.com/search?q=${encodeURIComponent((b.th && b.th !== b.n ? b.n + " " + b.th : b.n) + " เชียงใหม่")}`;
-          $("okMap").href = `https://www.google.com/maps/dir/?api=1&destination=${b.a},${b.o}`;
+          $("okMap").href = `https://www.google.com/maps/dir/?api=1&destination=${b.man ? encodeURIComponent(b.n + " Chiang Mai") : b.a + "," + b.o}`;
           $("datePop").classList.remove("show");
           setTimeout(() => {
             $("okPop").classList.add("show");
